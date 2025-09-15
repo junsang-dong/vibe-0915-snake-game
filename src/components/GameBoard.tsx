@@ -8,6 +8,9 @@
 import React, { useCallback, useMemo } from 'react';
 import { GameBoardProps, Position } from '../types/game.types';
 import { isMobileDevice, calculateCellSize } from '../utils/gameHelpers';
+import SnakeHeadIcon from '../assets/snake-head.svg';
+import SnakeBodyIcon from '../assets/snake-body.svg';
+import FrogIcon from '../assets/frog.svg';
 
 const GameBoard: React.FC<GameBoardProps> = ({
   snake,
@@ -58,12 +61,17 @@ const GameBoard: React.FC<GameBoardProps> = ({
         const isFoodCell = isFood(position);
         
         let cellClass = 'game-cell';
+        let cellContent = null;
+
         if (isHead) {
           cellClass += ' snake-head';
+          cellContent = <img src={SnakeHeadIcon} alt="Snake Head" className="w-full h-full object-contain" />;
         } else if (isBody) {
           cellClass += ' snake-segment';
+          cellContent = <img src={SnakeBodyIcon} alt="Snake Body" className="w-full h-full object-contain" />;
         } else if (isFoodCell) {
           cellClass += ' food';
+          cellContent = <img src={FrogIcon} alt="Frog Food" className="w-full h-full object-contain animate-pulse" />;
         }
 
         cells.push(
@@ -79,7 +87,9 @@ const GameBoard: React.FC<GameBoardProps> = ({
             onClick={() => handleCellClick(position)}
             data-x={x}
             data-y={y}
-          />
+          >
+            {cellContent}
+          </div>
         );
       }
     }

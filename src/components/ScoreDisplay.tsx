@@ -50,11 +50,8 @@ const ScoreDisplay: React.FC<ScoreDisplayProps> = ({
 
   return (
     <div className="w-full max-w-md mx-auto mb-6">
-      {/* Game Title */}
+      {/* Game Status */}
       <div className="text-center mb-6">
-        <h1 className="font-black text-3xl md:text-4xl mb-2" style={{fontFamily: "'Orbitron', 'JetBrains Mono', monospace", color: '#00ff00'}}>
-          🐍 SNAKE GAME
-        </h1>
         <div className="text-sm font-mono transition-colors duration-300" style={{color: gameStatus.color === 'text-neon-blue' ? '#00bfff' : gameStatus.color === 'text-neon-green' ? '#00ff00' : gameStatus.color === 'text-yellow-400' ? '#facc15' : '#ff0000'}}>
           {gameStatus.text}
         </div>
@@ -79,7 +76,7 @@ const ScoreDisplay: React.FC<ScoreDisplayProps> = ({
           <div className="text-xs text-gray-400 font-mono mb-1 flex items-center justify-center gap-1">
             🏆 BEST
           </div>
-          <div className="font-black text-2xl" style={{fontFamily: "'Orbitron', 'JetBrains Mono', monospace", color: '#00bfff'}}>
+          <div className="font-black" style={{fontFamily: "'Orbitron', 'JetBrains Mono', monospace", color: '#00bfff', fontSize: '2.25rem', fontWeight: '900'}}>
             {formatScore(bestScore)}
           </div>
         </div>
